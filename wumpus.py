@@ -1,3 +1,5 @@
+#Hunt the Wumpus
+
 from random import choice
 from os import system, name
 
