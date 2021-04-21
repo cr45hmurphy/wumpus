@@ -1,7 +1,33 @@
-#Hunt the Wumpus
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+# =============================================================================
+# Created By  : Dade Murphy
+# Created Date: Wed April 21 2021
+# =============================================================================
+"""Hunt the Wumpus"""
+# =============================================================================
+# Built while reading through chapter 2 of "Hello! Python" by Anthony Briggs
+# =============================================================================
+# STANDARD FIELDS
+# =============================================================================
+__author__ = "Dade Murphy"
+__email__ = "cr45hmurphy@gmail.com"
+__credits__ = ["Anthony Briggs"]
+__date__ = "2021/04/21"
+__deprecated__ = False
+__license__ = "GPLv3"
+__maintainer__ = "Dade Murphy"
+__status__ = "Development"
+__version__ = "0.0.1"
 
+
+# =============================================================================
+# Imports
+# =============================================================================
 from random import choice
 from os import system, name
+
+
 
 def clear():
     #for windows
