@@ -1,0 +1,1 @@
+Simple Hunt the Wumpus game
