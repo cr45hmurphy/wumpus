@@ -17,8 +17,8 @@ __date__ = "2021/04/21"
 __deprecated__ = False
 __license__ = "GPLv3"
 __maintainer__ = "Dade Murphy"
-__status__ = "Development"
-__version__ = "0.0.1"
+__status__ = "Production"
+__version__ = "1.0.0"
 
 
 # =============================================================================
