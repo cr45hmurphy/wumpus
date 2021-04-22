@@ -100,7 +100,7 @@ def print_location(player_location):
         print("You smell a wumpus!")
         print()
     if bat_location in neighbors:
-        print("You can hear squeaks and the russling of wings nearby.")
+        print("You can hear squeaks and the rustling of wings nearby.")
         print()
 
 
