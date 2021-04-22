@@ -28,8 +28,12 @@ from random import choice
 from os import system, name
 
 
+# =============================================================================
+# Required Functions
+# =============================================================================
 
 def clear():
+    """ Clear screen """
     #for windows
     if name == 'nt':
         _ = system('cls')
@@ -37,6 +41,7 @@ def clear():
     #for mac and linux
     else:
         _ = system('clear')
+
 
 def setup_caves(cave_numbers):
     """ Create the starting list of caves. """
@@ -82,12 +87,6 @@ def choose_cave(cave_list):
         cave_number = choice(cave_list)
     return cave_number
 
-def print_caves():
-    """ Print out the current cave structure
-    for debugging purposes. """
-    for number in cave_numbers:
-        print(number, ":", caves[number])
-    print('----------')
 
 def print_location(player_location):
     """ Tell the player about where they are """
@@ -98,7 +97,12 @@ def print_location(player_location):
         next_cave = neighbors[tunnel]
         print("  ", tunnel+1, "-", cave_names[next_cave])
     if wumpus_location in neighbors:
-        print("I smell a wumpus!")
+        print("You smell a wumpus!")
+        print()
+    if bat_location in neighbors:
+        print("You can hear squeaks and the russling of wings nearby.")
+        print()
+
 
 def ask_for_cave():
     """ Get the player's next location. """
@@ -166,9 +170,36 @@ def do_shooting():
         print("Game Over")
         print()
     return True
-        
 
-# Set up cave system
+# =============================================================================
+# Optional Functions
+# =============================================================================
+
+def print_caves():
+    """ Print out the current cave structure
+    for debugging purposes. """
+    for number in cave_numbers:
+        print(number, ":", caves[number])
+    print('----------')
+
+
+def bat_grab():
+    """ Move player to another location """
+    print()
+    print("A flurry of bats fills the cave! The rush of wind lifts you up and carries you to another location.")
+    print()
+    player_location = choice(cave_numbers)
+    bat_location = choice(cave_numbers)
+    while player_location == wumpus_location:
+        player_location = choice(cave_numbers)
+    while ((bat_location == player_location) or (bat_location == wumpus_location)):
+        bat_location = choice(cave_numbers)
+    return (player_location, bat_location)
+
+# =============================================================================
+# Initialize Game
+# =============================================================================
+
 cave_numbers = range(0,20)
 unvisited_caves = list(cave_numbers)
 visited_caves = []
@@ -208,8 +239,11 @@ finish_caves()
 # Set home location of all entitites
 wumpus_location = choice(cave_numbers)
 player_location = choice(cave_numbers)
+bat_location = choice(cave_numbers)
 while player_location == wumpus_location:
-       player_location = choice(cave_numbers)
+    player_location = choice(cave_numbers)
+while ((bat_location == player_location) or (bat_location == wumpus_location)):
+    bat_location = choice(cave_numbers)
 
 # Welcome message
 print("Welcome to Hunt the Wumpus!")
@@ -219,7 +253,12 @@ print()
 print("To play, just type the number")
 print("of the cave you wish to enter next.")
 
-# Main loop
+
+# =============================================================================
+# Main Loop
+# =============================================================================
+
+
 while 1:
     print_location(player_location)
 
@@ -236,6 +275,10 @@ while 1:
             print("Game Over")
             print()
             break
+        elif player_location == bat_location:
+            clear()
+            player_location, bat_location = bat_grab()
+
 
     if action == "a":
         game_over = do_shooting()
