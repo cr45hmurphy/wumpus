@@ -16,7 +16,7 @@
   <h3 align="center">Wumpus.py</h3>
 
   <p align="center">
-    A simple take on the ['Hunt the Wumpus'](https://en.wikipedia.org/wiki/Hunt_the_Wumpus) game.
+  A simple take on the <a href=https://en.wikipedia.org/wiki/Hunt_the_Wumpus>'Hunt the Wumpus'</a> game.
     <br />
   </p>
 
